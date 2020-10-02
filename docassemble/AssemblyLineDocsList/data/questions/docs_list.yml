@@ -1,0 +1,105 @@
+modules:
+  - .docs_list
+---
+id: interview order
+mandatory: True
+code: |
+  download
+---
+id: download
+event: download
+question: |
+  Assembly Line Documents List
+subquestion: |
+  Four ways to make the table.
+
+  All use the same css, which you can see in the `docs_list.py` module. That could be moved to a `css` file if we wanted it to be interview-wide, but putting it here will mean it only affects this page.
+
+  **One function with complex arguments:**
+  
+  ${ docs_list([ { "label": 'Document', "doc": a_document }, { "label": 'Cover page', "doc": a_cover_page }, { "label": 'Next steps', "doc": instructions } ]) }
+  
+  Some text under the table.
+  
+  <br/>
+  
+  **Two functions with simpler arguments:**
+  
+  ${ docs_list_top( 3 ) }
+  ${ docs_list_row( 'Document', a_document ) }
+  ${ docs_list_row( 'Cover page', a_cover_page ) }
+  ${ docs_list_row( 'Next steps', instructions ) }
+  
+  Some text under the table.
+  
+  <br/>
+  
+  **One template and two functions with simpler arguments. More customizable. Template is needed to hide complexity of spacing. Table formatting is necessary:**
+  
+  &nbsp; | &nbsp; | &nbsp;
+  :-|-:|-:
+  ${ doc_icon } Document | ${ download_button(a_document) } | ${ view_button(a_document) }
+  ${ doc_icon } Cover page | ${ download_button(a_cover_page) } | ${ view_button(a_cover_page) }
+  ${ doc_icon } Next steps | ${ download_button(instructions) } | ${ view_button(instructions) }
+  
+  Some text under the table.
+  
+  <br/>
+
+  **Two templates and four columns. Additional css may be desired:**
+  
+  &nbsp; | &nbsp; | &nbsp; | &nbsp;
+  :-|:-|-:|-:
+  :file: | Document | ${ a_document.download_file } | ${ a_document.view_file }
+  :file: | Cover page | ${ a_cover_page.download_file } | ${ a_cover_page.view_file }
+  :file: | Next steps | ${ instructions.download_file } | ${ instructions.view_file }
+  
+  Some text under the table.
+  
+css: |
+ ${ docs_list_css() }
+---
+generic object: DAFileCollection
+template: x.download_file
+content: |
+  ${ action_button_html(
+    x.pdf.url_for(attachment=True),
+    new_window=False, color="primary",
+
+    label='Download :file-download:'
+  )}
+---
+generic object: DAFileCollection
+template: x.view_file
+content: |
+  ${ action_button_html(
+    x.pdf.url_for(inline=True),
+    new_window="True", color="primary",
+
+    label='View <i class="far fa-eye"></i>'
+  )}
+---
+template: doc_icon
+content: |
+  :file:&nbsp;&nbsp;&nbsp;
+---
+attachment:
+  - name: Information Sheet
+    variable name: a_document
+    filename: document
+    content: |
+      This is a document
+---
+attachment:
+  - name: Information Sheet
+    variable name: a_cover_page
+    filename: cover_page
+    content: |
+      This is a cover page
+---
+attachment:
+  - name: Next Steps
+    variable name: instructions
+    filename: next_steps
+    content: |
+      These are the follow-up instructions
