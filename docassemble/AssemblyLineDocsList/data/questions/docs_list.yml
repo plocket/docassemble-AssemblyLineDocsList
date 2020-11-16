@@ -50,8 +50,8 @@ subquestion: |
   
   _The template is needed to hide complexity of spacing. Table formatting is necessary._
   
-  &nbsp; | &nbsp; | &nbsp;
-  :-|-:|-:
+  &nbsp; | &nbsp; | &nbsp; | &nbsp;
+  :-|-:|-:|-:
   :file:&nbsp;&nbsp; Document | ${ download_button(a_document) } | ${ view_button(a_document) }
   ${ doc_icon } Cover page | ${ download_button(a_cover_page) } | ${ view_button(a_cover_page) }
   ${ doc_icon } Next steps | ${ download_button(instructions) } | ${ view_button(instructions) }
@@ -115,7 +115,9 @@ subquestion: |
   **ID** | **opt 1** | **opt 2** | **opt 3** | **opt 4** | **opt 5** | **opt 6** | **xp/10**
   2 | 6 | 5.5 | 5 | 4.5 | 2.5 | 4 | 7
   3 | 4.75 | 4.5 | 4.25 | 2.5 | 4 | 7
-  4 |  |  |  |  |  |  | 
+  4 | 4 | 5 | 5 | 4-5 | 4-5 | 4 | 3
+  5 |  |  | 4 | 4 | 4 | 4 | 3
+  6 |  |  |  |  |  |  | 
   
   **Simplicity of code for customization (5 most simple):**
   
@@ -124,7 +126,9 @@ subquestion: |
   **ID** | **opt 1** | **opt 2** | **opt 3** | **opt 4** | **opt 5** | **opt 6** | **xp/10**
   2 | 3 depending on code | 2 depending on code (different considerations) 4 previous considerations | 3.5 with comments | 3.5 | 2.5 | 4 | 7
   3 | 3 with comments | 3 with comments (different considerations) 4.5 for just label | 3 without comments | 2.5 | 4 | 7
-  4 |  |  |  |  |  |  | 
+  4 | 1 | 1 | 1 | 1 | 2 | 2 | 3
+  5 |  |  | 3 | 4 | 4 | 3 | 3
+  6 |  |  |  |  |  |  | 
   
   **Usability of UI (5 is the best):**
   
@@ -134,12 +138,15 @@ subquestion: |
   2 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 1 | 7
   3 | 5 | 5 | 5 | 5 | 5 | 1 | 7
   4 |  |  |  |  |  |  | 
+  5 |  |  |  |  |  |  | 
   
   **Feedback:**
   
   1. Prefer encapsulation, taking load out of YAML. Prefer `doc_icon` because fewer options is best at first, but maybe in future do css for that first column (which would be harder to customize, but that's fine).
   2. Think people are used to buttons for downloading and other big actions. If looks like a table, it could look like a link instead of a button. Table: maybe different colors for different buttons. Maybe swap the order of buttons - download on the right-most. Agree with #3. A long list might become confusing. Background color for every other line? Keeping rows distinct? Or less space to the buttons. Agrees icon of paper is confusing if there's not something to differentiate. Nielson/Norman group usability research. Opt 5 code: A lot more syntax to be careful of messing up, adds complexity. Can replace without too much trouble probably. Opt 4: more like 3-4. Need to know where that template is created. Requires to look in a few places to change something. What if didn’t want to change template? Very readable, though. If didn’t have to change it then simplicity 4-5. Clearer to read. Opt 4: prefer doc_icon - easier to read and can adjust spacing elsewhere. Like it as one space. Also find the functions easier to read than attribute notation. Very clear what needs changing. Opt 2: Very simple/easy to change what is changeable. Customizing deeper than labels would potentially be somewhat more hard to chase down. Opt 1: Comfortable with list data structure, know exactly where to change it. Totally changing would be a little easier with just one function to work on.
   3. Also agrees buttons for big actions. Opt 5 - great usability, though black 'doc' icon at start is a bit confusing or unneeded, icons are useful. Code is not as readable. Multi-line. Can find label to edit, color is confusing. Maybe more confusing with people with less experience. Agree with order of buttons (2). Opt 4: Agree with 2. Needs some comment to be able to use this, though, to tell where to find the template to copy. How little code is very readable, but finding to customize would be confusing. If no customization it’s super clear. Opt 5: &nbsp; - fine to have it in the table as opposed to abstracted if you just have one. If you have multiple it’s a harder question. Do like it visually a little closer, like two spaces. The abstraction question is hard, though. Parenthesis make it a little more clear. Impact of lack of flexibility: low impact because probably not a lot of need for customization, but making it your own would be more challenging. Opt 1: Keys help. List may be confusing for other people, but clear/readable. To totally change would be harder, but to just add more rows looks straightforward and I would know exactly what to do. Easy to copy/paste.
+  4. (Sorry, I took bad notes) Opt 5 - could change color if saw index of other colors, and probably labels, maybe icons. Opt 3: (Guess at functionality) To make less space would change &nbsp; (but guess was changing headings). Would use `send_button` function if it existed already. Opt 2: Understands there's a function doing this elsewhere. About same simplicity as #2 to use as-is, though easier to edit because on one line. Opt 1: 'doc' is the icon? Ah, no, they're denoting what the variable is. UI: Switch positions of 'View' and 'Download' buttons.
+  5. Opt 6: Understood code and use. Not tried to do customizations further for this kind of thing. Opt 5: Understood functionality - open in new window, color, different rows/columns, etc. Says presents it way to customize itself very clearly. Opt 4: Less customization clarity until saw template. Was able to add addtional button and column. Opt 3: Seems more simple to use as-is. Customizing would have to find existing code to copy it and adjust. Final note before break: All very useable. All come with a level of confusion.
   
   TODO: Try without doc icon on left.
   
